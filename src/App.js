@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "./App.css";
 
 const todos = {
@@ -30,8 +31,10 @@ const todos = {
 };
 
 function App() {
+  const [value, setValue] = useState("");
+
   const addTodo = () => {
-    alert("clicked");
+    alert(value);
   };
   return (
     <>
@@ -40,7 +43,12 @@ function App() {
           <li key={todo.id}>{todo.text}</li>
         ))}
       </ul>
-      <input />
+      <input
+        value={value}
+        onChange={(event) => {
+          setValue(event.target.value);
+        }}
+      />
       <button onClick={addTodo}>Add</button>
     </>
   );
