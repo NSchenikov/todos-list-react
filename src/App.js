@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import "./App.css";
+import { Todo } from "./Todo";
 
 const fetchTodos = () => {
   return fetch("https://webdev-api.sky.pro/api/todos").then((res) =>
@@ -37,7 +38,7 @@ function App() {
     <>
       <ul>
         {todos.todos.map((todo) => (
-          <li key={todo.id}>{todo.text}</li>
+          <Todo key={todo.id} text={todo.text} createdAt={todo.created_at} />
         ))}
       </ul>
       <input
